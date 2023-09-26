@@ -20,7 +20,7 @@ results = model.predict(img_path, save=True, conf=0.5) # device=0 by default, co
 #print(results)
 
 ' 用下面这行代码运行'
-' python demo.py >> output.txt 2>&1 ' # 不带前台显示
+' python demo.py >> output.txt 2>&1 ' # 不带前台显示，>>追加写入，>覆盖写入
 ' python demo.py 2>&1 | tee output.txt ' # 带前台显示，但是为红色错误输出
 
 # results = model.predict(img_path,save=True,classes=[0,2],conf=0.5) # i.e. classes=0,classes=[0,3,4]
