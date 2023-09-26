@@ -1,11 +1,12 @@
+
 from ultralytics import YOLO
 # from ultralytics.yolo.utils.benchmarks import benchmark
 import cv2
 
 # Load a model
 # model = YOLO("yolov8n.yaml")  # build a new model from scratch
-# model = YOLO("best.pt")  # load a pretrained model (recommended for training)
-model = YOLO(r"D:\files\BUPT\DnB\train42\weights\best.pt")
+# model = YOLO("best.pt")  # load a pr  etrained model (recommended for training)
+model = YOLO(r".\best.pt")
 
 # Use the model
 # model.train(data="coco128.yaml", epochs=3,workers=0)  # train the model,workers=0 if windows
@@ -18,7 +19,11 @@ print(results)
 flag = False
 img_path = r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
 results = model.predict(img_path, save=True, conf=0.5) # device=0 by default, conf:置信度阈值
-print(results)
+f=open(r".\results.txt",'w')
+f.write(str(results)+'\n')
+f.close()
+# print(results)
+
 # results = model.predict(img_path,save=True,classes=[0,2],conf=0.5) # i.e. classes=0,classes=[0,3,4]
 
 # save detection results *
