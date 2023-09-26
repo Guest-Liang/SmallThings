@@ -1,10 +1,9 @@
 from ultralytics import YOLO
 # from ultralytics.yolo.utils.benchmarks import benchmark
-import cv2
 
 # Load a model
 # model = YOLO("yolov8n.yaml")  # build a new model from scratch
-# model = YOLO("best.pt")  # load a pr  etrained model (recommended for training)
+# model = YOLO("best.pt")  # load a pretrained model (recommended for training)
 model = YOLO(r".\best.pt")
 
 # Use the model
@@ -14,14 +13,15 @@ model = YOLO(r".\best.pt")
 results = model("bus.jpg")  # predict on an image
 print(results)
 # '''
+
 # img_path = "./test/images/"
-f=open(r".\results.txt",'w')
 img_path = r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
 results = model.predict(img_path, save=True, conf=0.5) # device=0 by default, conf:置信度阈值
-f.write(str(model.predict(img_path, save=True, conf=0.5))+'\n')
-f.write(str(results)+'\n')
-f.close()
-# print(results)
+#print(results)
+
+' 用下面这行代码运行'
+' python demo.py >> output.txt 2>&1 ' # 不带前台显示
+' python demo.py 2>&1 | tee output.txt ' # 带前台显示，但是为红色错误输出
 
 # results = model.predict(img_path,save=True,classes=[0,2],conf=0.5) # i.e. classes=0,classes=[0,3,4]
 

@@ -12,7 +12,7 @@ WindowName=f"{url}:Video" # 窗口标题
 SavePath=r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
 def Getimg():
     Cap=cv2.VideoCapture(url)
-    i=0
+    i=1
     print(Cap.isOpened())
     cv2.namedWindow(WindowName, 0)
     cv2.resizeWindow(WindowName, 320, 200)
