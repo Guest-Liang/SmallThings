@@ -9,29 +9,32 @@ import time
 import cv2
 url="http://192.168.8.1:8083/?action=stream"
 WindowName=f"{url}:Video" # 窗口标题
-SavePath=r".\Pictures"
+SavePath=r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
 def Getimg():
     Cap=cv2.VideoCapture(url)
+    i=0
     print(Cap.isOpened())
     cv2.namedWindow(WindowName, 0)
     cv2.resizeWindow(WindowName, 320, 200)
-    i=0
     while (Cap.isOpened()):
         dt_ms=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
-        dt_msnodate=datetime.datetime.now().strftime('%H%M%S')
+        dt_hms=datetime.datetime.now().strftime('%H%M%S')
+        dt=datetime.datetime.now().strftime("%Y%m%d")
         print(dt_ms)
         ret, frame=Cap.read() # ret是读取成功与否，bool
         cv2.namedWindow(WindowName, 0)
-        cv2.namedWindow(WindowName, cv2.WINDOW_NORMAL|cv2.WINDOW_KEEPRATIO) 
+        cv2.namedWindow(WindowName, cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO) 
         cv2.imshow(WindowName, frame)
-        print(f'{SavePath}\{dt_msnodate}.jpg')
-        print(cv2.imwrite(f'{SavePath}\{dt_msnodate}_{i}.jpg',frame)) # 文件名不能有Windows禁止的符号
-        if cv2.waitKey(1)&0xFF==ord('q'):
+        print(f'{SavePath}\{dt}_{s}.jpg')
+        s = '%05d' % i
+        print(cv2.imwrite(f'{SavePath}\{dt}_{s}.jpg',frame)) # 文件名不能有Windows禁止的符号
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
         if cv2.getWindowProperty(WindowName,0)==-1: # 可以关闭后停止运行
             break
-        i+=1
-        time.sleep(0.25) # 休息一下吧
+        time.sleep(0.1) # 休息一下吧
+        # 不限制20张/s
+        i = i + 1
     Cap.release()
     cv2.destroyAllWindows()
 
