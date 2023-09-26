@@ -1,4 +1,3 @@
-
 from ultralytics import YOLO
 # from ultralytics.yolo.utils.benchmarks import benchmark
 import cv2
@@ -16,10 +15,10 @@ results = model("bus.jpg")  # predict on an image
 print(results)
 # '''
 # img_path = "./test/images/"
-flag = False
+f=open(r".\results.txt",'w')
 img_path = r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
 results = model.predict(img_path, save=True, conf=0.5) # device=0 by default, conf:置信度阈值
-f=open(r".\results.txt",'w')
+f.write(str(model.predict(img_path, save=True, conf=0.5))+'\n')
 f.write(str(results)+'\n')
 f.close()
 # print(results)
