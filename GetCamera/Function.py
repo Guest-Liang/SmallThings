@@ -25,8 +25,8 @@ def Getimg():
         cv2.namedWindow(WindowName, 0)
         cv2.namedWindow(WindowName, cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO) 
         cv2.imshow(WindowName, frame)
-        print(f'{SavePath}\{dt}_{s}.jpg')
         s = '%05d' % i
+        print(f'{SavePath}\{dt}_{s}.jpg')
         print(cv2.imwrite(f'{SavePath}\{dt}_{s}.jpg',frame)) # 文件名不能有Windows禁止的符号
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
