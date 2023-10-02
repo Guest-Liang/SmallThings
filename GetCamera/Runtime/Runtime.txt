@@ -1,0 +1,4 @@
+1002流程
+小车跑，同时运行Function.py，拿图片
+vsc打开前端界面，tomcat10.x，webapp
+跑完运行【GetCamera\train42\weights\GetDetectedIndex.py】
