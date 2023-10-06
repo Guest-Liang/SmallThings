@@ -6,13 +6,12 @@ import time
 import cv2
 import serial
 import serial.tools.list_ports
-import matplotlib
-import threading
 
 url="http://192.168.8.1:8083/?action=stream"
 WindowName=f"{url}:Video" # 窗口标题
 def open_live():
     os.system("ffplay -i http://192.168.8.1:8083/?action=stream")
+
 
 #从摄像头读取图像
 SavePath=r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
@@ -45,39 +44,7 @@ def Getimg():
     Cap.release()
     cv2.destroyAllWindows()
 
-# 从蓝牙读数据并画图
-def ReadBluetooth():
-    Ser=serial.Serial('COM4', 115200)
-    if Ser.isOpen():
-        print("串口已打开")
-    else:
-        print("串口打开失败")
-    DataList=[]
-    nowtime=datetime.datetime.now()
-    while datetime.datetime.now() - nowtime < datetime.timedelta(seconds=10):
-    # while True:
-        Data=Ser.readline().decode('utf-8').replace('\r\n','')
-        Elements=Data.split(',')
-        if len(Elements) != 3:
-            Elements = [0] * 3
-        DataList.append((Elements[0], Elements[1], Elements[2]))
-    Ser.close()
-    print(DataList)
-    # while True:
-    #     Data=Ser.readline().decode('utf-8').replace('\r\n','')
-    #     print(Data)
-
-Threads=[]
-# Threads.append(threading.Thread(target=Getimg))
-Threads.append(threading.Thread(target=open_live))
-# Threads.append(threading.Thread(target=ReadBluetooth))
 
 if __name__=='__main__':
-    # for t in Threads:
-    #     t.start()
-    # for t in Threads:
-    #     t.join()
     # Getimg()
     open_live()
-    # ReadBluetooth()
-    # 'http://ni012.gl-inet.com/'
