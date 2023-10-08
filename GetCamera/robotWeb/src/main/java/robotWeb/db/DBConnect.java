@@ -8,7 +8,8 @@ public class DBConnect {
 	private static final String DBDRIVER = "com.mysql.cj.jdbc.Driver" ;   
     private static final String DBURL = "jdbc:mysql://localhost:3306/robotwebdb" ;   
     private static final String DBUSER = "root" ;   
-    private static final String DBPASSWORD = "Pxy78625964587" ;   
+    // private static final String DBPASSWORD = "Pxy78625964587" ;   
+    private static final String DBPASSWORD = "1023mysql" ;   
     private static Connection conn = null ; 
     
     public DBConnect()   {   
