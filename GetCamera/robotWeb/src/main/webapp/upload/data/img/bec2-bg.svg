@@ -1,0 +1,18 @@
+<svg width="1444.000000" height="540.000000" viewBox="0 0 1444 540" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<mask id="mask16_1280" mask-type="alpha" maskUnits="userSpaceOnUse" x="0.000000" y="0.000000" width="1444.000000" height="540.000000">
+		<rect id="Base" width="1444.000000" height="540.000000" fill="#FFFFFF"/>
+	</mask>
+	<g mask="url(#mask16_1280)">
+		<path id="Rectangle 11" d="M-223.563 -269.145L1150.89 437.227C1175.45 449.85 1185.13 479.992 1172.5 504.553L807.262 1215.24C794.641 1239.79 764.502 1249.48 739.945 1236.86C620.501 1175.49 285.989 1003.63 53.2227 883.919C-179.003 764.489 -514.759 591.985 -634.499 530.469C-659.063 517.845 -668.747 487.702 -656.123 463.139L-290.889 -247.529C-278.267 -272.09 -248.124 -281.768 -223.563 -269.145Z" fill-rule="nonzero" fill="url(#paint_linear_16_1281_0)"/>
+	</g>
+	<defs>
+		<linearGradient id="paint_linear_16_1281_0" x1="885.500183" y1="794.999939" x2="29.500000" y2="-183.500122" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#F5F2FD"/>
+			<stop offset="1.000000" stop-color="#F5F2FD" stop-opacity="0.000000"/>
+			<stop offset="1.000000" stop-color="#F5F2FD" stop-opacity="0.098039"/>
+		</linearGradient>
+	</defs>
+</svg>

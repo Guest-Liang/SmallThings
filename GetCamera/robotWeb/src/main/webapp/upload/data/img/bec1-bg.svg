@@ -1,0 +1,19 @@
+<svg width="1440.000000" height="552.000000" viewBox="0 0 1440 552" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<mask id="mask16_1312" mask-type="alpha" maskUnits="userSpaceOnUse" x="0.000000" y="0.000000" width="1440.000000" height="552.000000">
+		<rect id="Base" width="1440.000000" height="552.000000" transform="matrix(1 0 0 -1 0 552)" fill="#FFFFFF"/>
+	</mask>
+	<g mask="url(#mask16_1312)">
+		<path id="Rectangle 13" d="M720.464 -1091.6L1998.45 -434.856C2023.01 -422.234 2032.69 -392.092 2020.06 -367.531L1546.48 554.03C1533.86 578.587 1503.73 588.272 1479.17 575.652C1365.15 517.087 1056.19 358.376 840.648 247.511C625.61 136.903 315.509 -22.3931 201.198 -81.1079C176.632 -93.7314 166.946 -123.875 179.569 -148.44L653.139 -1069.98C665.76 -1094.54 695.903 -1104.22 720.464 -1091.6Z" fill-rule="nonzero" fill="#F9F7FF"/>
+		<path id="Rectangle 12" d="M-223.563 282.855L1150.89 989.227C1175.45 1001.85 1185.13 1031.99 1172.5 1056.55L807.262 1767.24C794.641 1791.79 764.502 1801.48 739.945 1788.86C620.501 1727.49 285.989 1555.63 53.2227 1435.92C-179.003 1316.49 -514.759 1143.99 -634.499 1082.47C-659.063 1069.84 -668.747 1039.7 -656.123 1015.14L-290.889 304.471C-278.267 279.91 -248.124 270.232 -223.563 282.855Z" fill-rule="nonzero" fill="url(#paint_linear_16_1315_0)"/>
+	</g>
+	<defs>
+		<linearGradient id="paint_linear_16_1315_0" x1="885.500183" y1="1347.000000" x2="29.500000" y2="368.499878" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#F5F2FD"/>
+			<stop offset="1.000000" stop-color="#F5F2FD" stop-opacity="0.000000"/>
+			<stop offset="1.000000" stop-color="#F5F2FD" stop-opacity="0.098039"/>
+		</linearGradient>
+	</defs>
+</svg>

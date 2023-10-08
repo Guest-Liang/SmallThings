@@ -1,0 +1,12 @@
+<svg width="1440.000000" height="904.000000" viewBox="0 0 1440 904" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<mask id="mask1_7" mask-type="alpha" maskUnits="userSpaceOnUse" x="0.000000" y="0.000000" width="1440.000000" height="904.000000">
+		<path id="Base" d="M1440 0L1440 904L0 904L0 0L1440 0L1440 0Z" fill-rule="evenodd" fill="#C4C4C4"/>
+	</mask>
+	<g mask="url(#mask1_7)">
+		<path id="Rectangle 14" d="M1939.43 625.896C1958.77 645.604 1958.47 677.262 1938.76 696.604L276.671 2327.62C256.966 2346.95 225.313 2346.67 205.976 2326.96C86.7645 2205.55 -311.026 1800.38 -584.292 1521.61C-856.893 1243.53 -1256.17 836.846 -1375.68 715.123C-1395.03 695.409 -1394.74 663.748 -1375.03 644.403L287.037 -986.587C306.747 -1005.93 338.405 -1005.63 357.745 -985.921L1939.43 625.896L1939.43 625.896Z" fill-rule="evenodd" fill="#F9F7FF"/>
+	</g>
+	<defs/>
+</svg>

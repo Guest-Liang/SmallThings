@@ -7,7 +7,7 @@ import matplotlib
 
 # 从蓝牙读数据并画图
 def ReadBluetooth_Ultrasonic():
-    Ser=serial.Serial('COM4', 115200)
+    Ser=serial.Serial('COM4', 9600)
     if Ser.isOpen():
         print("串口已打开")
     else:
@@ -25,7 +25,7 @@ def ReadBluetooth_Ultrasonic():
     Ser.close()
 
 def ReadBluetooth_MPU():
-    Ser=serial.Serial('COM4', 115200)
+    Ser=serial.Serial('COM4', 9600)
     if Ser.isOpen():
         print("串口已打开")
     else:
@@ -33,11 +33,10 @@ def ReadBluetooth_MPU():
     nowtime=datetime.datetime.now()
     while datetime.datetime.now() - nowtime < datetime.timedelta(seconds=10):
     # while True:
-        # Data=Ser.readline().decode('utf-8').replace('\r\n','')
-        Data=Ser.readline()
+        Data=Ser.readline().decode('utf-8').replace('\r\n','')
         print(Data)
     Ser.close()
 
 if __name__=='__main__':
-    ReadBluetooth_Ultrasonic()
-    # ReadBluetooth_MPU()
+    # ReadBluetooth_Ultrasonic()
+    ReadBluetooth_MPU()
