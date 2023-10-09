@@ -1,10 +1,10 @@
-image 2/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\10.jpg: 384x640 1 book, 5 cubes, 69.4ms
-image 3/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\11.jpg: 384x640 2 books, 4 cubes, 1 key, 53.5ms
-image 4/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\2.jpg: 448x640 1 key, 77.9ms
-image 5/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\3.jpg: 512x640 1 cube, 69.1ms
-image 6/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\4.jpg: 640x640 1 cube, 89.8ms
-image 7/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\5.jpg: 640x640 1 book, 82.7ms
-image 8/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\6.jpg: 448x640 4 keys, 57.8ms
-image 9/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\7.jpg: 384x640 4 books, 47.8ms
-image 10/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\8.jpg: 384x640 5 cubes, 48.8ms
-image 11/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\9.jpg: 384x640 2 books, 4 cubes, 1 key, 46.8ms
+image 2/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\10.jpg: 384x640 1 book, 5 cubes, 252.0ms
+image 3/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\11.jpg: 384x640 2 books, 4 cubes, 1 key, 20.0ms
+image 4/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\2.jpg: 448x640 1 key, 237.6ms
+image 5/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\3.jpg: 512x640 1 cube, 30.8ms
+image 6/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\4.jpg: 640x640 1 cube, 33.2ms
+image 7/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\5.jpg: 640x640 1 book, 32.6ms
+image 8/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\6.jpg: 448x640 4 keys, 26.9ms
+image 9/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\7.jpg: 384x640 4 books, 23.0ms
+image 10/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\8.jpg: 384x640 5 cubes, 18.0ms
+image 11/11 D:\files\VSCode\SmallThings\GetCamera\train42\testimage\9.jpg: 384x640 2 books, 4 cubes, 1 key, 16.3ms

@@ -1,1 +1,3 @@
-show tables;
+-- show tables;
+-- DESCRIBE robotinfo;
+DESCRIBE userinfo;

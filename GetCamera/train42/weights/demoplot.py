@@ -1,5 +1,6 @@
 from ultralytics import YOLO
 import cv2
+import torch
 # from ultralytics.yolo.utils.benchmarks import benchmark
 
 # Load a model
@@ -19,7 +20,7 @@ print(results)
 # img_path = r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
 img_path = r"D:\files\VSCode\SmallThings\GetCamera\train42\testimage\2.jpg"
 # results = model.predict(img_path, save=True, conf=0.5) # device=0 by default, conf:置信度阈值
-results = model.predict(img_path, show=True, save=True, device=1, conf=0.5)
+results = model.predict(img_path, save=True, device=0, conf=0.5)
 #print(results)
 
 ' 用下面这行代码运行'
