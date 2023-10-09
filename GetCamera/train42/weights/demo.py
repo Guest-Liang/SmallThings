@@ -15,8 +15,8 @@ print(results)
 # '''
 
 # img_path = "./test/images/"
-# img_path = r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
-img_path = r"D:\files\VSCode\SmallThings\GetCamera\train42\testimage"
+img_path = r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
+# img_path = r"D:\files\VSCode\SmallThings\GetCamera\train42\testimage"
 results = model.predict(img_path, save=True, conf=0.5) # device=0 by default, conf:置信度阈值
 #print(results)
 

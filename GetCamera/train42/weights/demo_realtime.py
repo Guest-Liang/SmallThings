@@ -7,14 +7,6 @@ import cv2
 # model = YOLO("best.pt")  # load a pretrained model (recommended for training)
 model = YOLO(r".\best.pt")
 
-# Use the model
-# model.train(data="coco128.yaml", epochs=3,workers=0)  # train the model,workers=0 if windows
-# metrics = model.val()  # evaluate model performance on the validation set
-'''
-results = model("bus.jpg")  # predict on an image
-print(results)
-# '''
-
 # img_path = "./test/images/"
 # img_path = r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
 # img_path = r"D:\files\VSCode\SmallThings\GetCamera\train42\testimage"
@@ -26,9 +18,6 @@ print(results)
 ' python demo.py 2>&1 | tee output.txt ' # 带前台显示，但是为红色错误输出
 
 # results = model.predict(img_path,save=True,classes=[0,2],conf=0.5) # i.e. classes=0,classes=[0,3,4]
-
-# save detection results *
-# results = model.predict(img_path,save=True,save_txt=True,classes=0,conf=0.4)
 
 
 url="http://192.168.8.1:8083/?action=stream"
