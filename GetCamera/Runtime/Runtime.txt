@@ -1,4 +1,4 @@
-1002流程
-小车跑，同时运行Function.py，拿图片
-vsc打开前端界面，tomcat10.x，webapp
-跑完运行【GetCamera\train42\weights\GetDetectedIndex.py】
+1009流程
+eclipse打开前端，tomcat9.0.80，robotWeb
+小车跑，运行GetPicture.py拿图片
+跑完运行图像识别

@@ -4,8 +4,6 @@ import os
 import datetime
 import time
 import cv2
-import serial
-import serial.tools.list_ports
 
 url="http://192.168.8.1:8083/?action=stream"
 WindowName=f"{url}:Video" # 窗口标题
@@ -17,14 +15,12 @@ def open_live():
 SavePath=r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
 def Getimg():
     Cap=cv2.VideoCapture(url)
-    # Cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
     i=1
     print(Cap.isOpened())
     cv2.namedWindow(WindowName, 0)
     cv2.resizeWindow(WindowName, 320, 200)
     while (Cap.isOpened()):
         dt_ms=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
-        dt_hms=datetime.datetime.now().strftime('%H%M%S')
         dt=datetime.datetime.now().strftime("%Y%m%d")
         print(dt_ms)
         ret, frame=Cap.read() # ret是读取成功与否，bool
@@ -46,5 +42,5 @@ def Getimg():
 
 
 if __name__=='__main__':
-    # Getimg()
-    open_live()
+    Getimg()
+    # open_live()
