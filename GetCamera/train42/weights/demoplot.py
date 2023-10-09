@@ -56,7 +56,7 @@ tkinter.Button(Window, text="选择图像", command=browse_image).pack(side='top
 Raw=Image.open(r"D:\files\VSCode\SmallThings\GetCamera\train42\testimage\7.jpg")
 Label_Raw=tkinter.Label(Window, image=ImageTk.PhotoImage(Raw.resize((500, 500))))
 Label_Raw.pack(side='left')
-Processed=Image.open(r"D:\files\VSCode\SmallThings\GetCamera\train42\weights\runs\detect\predict4\7.jpg")
+Processed=Image.open(r"D:\files\VSCode\SmallThings\GetCamera\train42\weights\runs\detect\predict2\7.jpg")
 Label_Processed=tkinter.Label(Window, image=ImageTk.PhotoImage(Processed.resize((500,500))))
 Label_Processed.pack(side='right')
 
