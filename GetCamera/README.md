@@ -6,4 +6,4 @@
 # robotWeb
 JavaWeb，前端页面展示   
 # train42
-图象识别文件都在里面   
+图像识别文件都在里面   
