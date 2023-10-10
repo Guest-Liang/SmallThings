@@ -88,8 +88,9 @@ input {
 			<br />
 			<label>Type</label>
 				<select name="treasuretype">
-					<option value="common">normal</option>
-					<option value="special">precious</option>
+				    <option value="key">key</option>
+				    <option value="cube">cube</option>
+				    <option value="book">book</option>
 				</select>
 			<br />
 			<label>Number</label><input type="number"  name="treasureCount"/><br />

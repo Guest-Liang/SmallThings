@@ -201,7 +201,32 @@ input , .expform select{
                 <td><%= record.getBegintime() %></td>
                 <td><%= record.getEndtime() %></td>
                 <td><%= record.getTreasureCount() %></td>
-                <td><%= record.getTreasuretype().equals("special")?"precious":"normal" %></td>
+                <td><% 
+			        String treasureType = record.getTreasuretype();
+			        String displayText = "";
+			        switch (treasureType) {
+			            case "key":
+			                displayText = "key";
+			                break;
+			            case "cube":
+			                displayText = "cube";
+			                break;
+			            case "book":
+			                displayText = "book";
+			                break;
+			            case "special":
+			            	displayText = "precious";
+			            	break;
+			            case "common":
+			            	displayText = "normal";
+			            	break;
+			            default:
+			                displayText = "unknown";
+			                break;
+			        }
+			        out.print(displayText);
+			        %>
+                </td>
                 <td><img alt="图片" src="<%=record.getImg()%>" style="width: 80px; height: 60px;"></td>
                 <td><%= record.getRobotId() %></td>
             </tr>
