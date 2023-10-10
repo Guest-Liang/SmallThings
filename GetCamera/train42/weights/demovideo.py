@@ -6,7 +6,7 @@ import datetime
 # img_path = r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
 img_path = r"D:\files\VSCode\SmallThings\GetCamera\train42\testimage"
 # results = model.predict(img_path, save=True, conf=0.5) # device=0 by default, conf:置信度阈值
-WindowName='YOLOv8 Inference'
+WindowName='YOLOv8 Inference Group9'
 # Load the YOLOv8 model
 model = YOLO("./best.pt")
 # Open the video file

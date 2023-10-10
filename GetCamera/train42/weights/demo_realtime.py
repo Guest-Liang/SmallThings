@@ -1,48 +1,54 @@
 from ultralytics import YOLO
 import cv2
-# from ultralytics.yolo.utils.benchmarks import benchmark
+import datetime
+import numpy
 
 # Load a model
-# model = YOLO("yolov8n.yaml")  # build a new model from scratch
-# model = YOLO("best.pt")  # load a pretrained model (recommended for training)
 model = YOLO(r".\best.pt")
 
-# img_path = "./test/images/"
-# img_path = r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
-# img_path = r"D:\files\VSCode\SmallThings\GetCamera\train42\testimage"
-# results = model.predict(img_path, save=True, conf=0.5) # device=0 by default, conf:置信度阈值
-#print(results)
-
-' 用下面这行代码运行'
-' python demo.py >> output.txt 2>&1 ' # 不带前台显示，>>追加写入，>覆盖写入
-' python demo.py 2>&1 | tee output.txt ' # 带前台显示，但是为红色错误输出
+# whether to save the video-----------------
+save_video = 0
 
 # results = model.predict(img_path,save=True,classes=[0,2],conf=0.5) # i.e. classes=0,classes=[0,3,4]
 
-
 url="http://192.168.8.1:8083/?action=stream"
-WindowName='YOLOv8'
+WindowName='YOLOv8 Inference Group9'
+
 # predict video
-#video_path = "./video/1.mp4"
-cap = cv2.VideoCapture(url)
-cv2.namedWindow(WindowName, 0)
-cv2.resizeWindow(WindowName, 320, 200)
+cap = cv2.VideoCapture(0) # index 0 is obs virtual camera
+
+frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+if save_video:
+    nowtime = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+    fps = int(cap.get(cv2.CAP_PROP_FPS)) # 获取帧率
+    fourcc = cv2.VideoWriter_fourcc(*'XVID') # 设置视频的编码格式
+    out_proc = cv2.VideoWriter(f'{nowtime}_proconly.avi', fourcc, fps, (frame_width, frame_height), True)
+    out_bio = cv2.VideoWriter(f'{nowtime}_bio.avi', fourcc, fps, (frame_width * 2, frame_height), True)
+
+
+
 # Loop through the video frames
 while cap.isOpened():
     # Read a frame from the video
     success, frame = cap.read()
-
+    cv2.namedWindow(WindowName, 0)
+    cv2.namedWindow(WindowName, cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO) 
+    cv2.resizeWindow(WindowName, 1280, 360)
     if success:
         # Run YOLOv8 inference on the frame
         results = model(frame)
-
-        # Visualize the results on the frame
         annotated_frame = results[0].plot()
 
-        cv2.namedWindow(WindowName, 0)
-        cv2.namedWindow(WindowName, cv2.WINDOW_NORMAL | cv2.WINDOW_KEEPRATIO) 
+        imgs=numpy.hstack((frame, annotated_frame)) # 水平拼接两帧图像
+
         # Display the annotated frame
-        cv2.imshow("YOLOv8 Inference", annotated_frame)
+        # cv2.imshow(WindowName, annotated_frame)
+        cv2.imshow(WindowName, imgs)
+
+        if (save_video):
+            out_proc.write(annotated_frame) # 仅检测结果
+            out_bio.write(imgs) # 检测结果和原图
 
         # Break the loop if 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord("q"):
