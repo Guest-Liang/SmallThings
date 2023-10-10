@@ -7,7 +7,7 @@ import numpy
 model = YOLO(r".\best.pt")
 
 # whether to save the video-----------------
-save_video = 0
+save_video = 1
 
 # results = model.predict(img_path,save=True,classes=[0,2],conf=0.5) # i.e. classes=0,classes=[0,3,4]
 
@@ -15,7 +15,8 @@ url="http://192.168.8.1:8083/?action=stream"
 WindowName='YOLOv8 Inference Group9'
 
 # predict video
-cap = cv2.VideoCapture(0) # index 0 is obs virtual camera
+# cap = cv2.VideoCapture(0) # index 0 is obs virtual camera
+cap = cv2.VideoCapture(url)
 
 frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))

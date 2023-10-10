@@ -1,71 +1,83 @@
-import tkinter as tk
-from tkinter import filedialog
-from PIL import ImageTk, Image
-import cv2
-import torch
-from torchvision.transforms import functional as F
+import PySimpleGUI as sg
 from ultralytics import YOLO
-import numpy as np
-import tensorflow as tf
+import cv2
+import os
+import glob
 
-# 加载模型
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-model = YOLO(r".\best.pt")
-model.to(device)
-# model.val()
+# Load a model
+model = YOLO("best.pt")  # load a pretrained model (recommended for training)
 
-# 创建GUI窗口
-window = tk.Tk()
-window.title("YOLOv5 Demo")
+# Define the GUI layout
+layout = [
+    [sg.Text("请选择要检测的图片文件夹："), sg.Input(key="-FOLDER-"), sg.FolderBrowse("浏览")],
+    [sg.Text("请输入置信度阈值（0-1）："), sg.Input(key="-CONF-", default_text="0.5")],
+    [sg.Button("开始检测"), sg.Button("Next Image"), sg.Button("退出")],
+    [sg.Image(key="-IMAGE-", size=(480, 270))],
+    [sg.Text(key="-INFO-", size=(60, 1))],
+    [sg.Image(filename='./confusion_matrix_normalized2.png', key="-ACCURACY-", size=(480, 270))],
+]
 
-# 创建画布
-canvas = tk.Canvas(window, width=800, height=300)
-canvas.pack()
+# Create the GUI window
+window = sg.Window("YOLOv8对象检测", layout, size=(1280, 720))
 
-# 定义预测函数
-def predict(image_path):
-    # 加载图像
-    image = cv2.imread(image_path)
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    image = Image.fromarray(image)
+# Initialize image_files to an empty list
+image_files = []
 
-    # 预处理图像
-    image = F.to_tensor(image).unsqueeze(0).to(device)
-    with torch.no_grad():
-        detections = model(image)
+# Loop through the GUI events
+while True:
+    event, values = window.read()
+    if event == "退出" or event == sg.WIN_CLOSED:
+        break
+    elif event == "开始检测":
+        # Get the folder path and confidence threshold from the user input
+        folder_path = values["-FOLDER-"]
+        conf = float(values["-CONF-"])
 
-    # 处理预测结果
-    # TODO: 根据预测结果在图像上绘制边界框等信息
-    for detection in detections:
-        class_name = detection['class']
-        confidence = detection['confidence']
-        bbox = detection['bbox']
+        # Check if the folder path is valid
+        if folder_path:
+            # Get the list of image files in the folder
+            image_files = glob.glob(os.path.join(folder_path, "*"))
+            image_files = [f for f in image_files if os.path.splitext(f)[1] in [".jpg", ".png", ".bmp"]]
 
-        # 提取边界框坐标和尺寸
-        x, y, width, height = bbox
+            # Check if there are any image files in the folder
+            if not image_files:
+                # Show an error message if there are no image files in the folder
+                sg.popup_error("文件夹中没有图片文件！")
+                continue
 
-        # 绘制边界框
-        cv2.rectangle(image, (x, y), (x + width, y + height), (0, 255, 0), 2)
+        else:
+            # Show an error message if the folder path is invalid
+            sg.popup_error("请选择一个有效的文件夹！")
+            continue
 
-    # 在边界框上方绘制类别和置信度
-    text = f'{class_name}\nConfidence: {confidence:.2f}'
-    cv2.putText(image, text, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+        # Predict on the first image file using YOLOv8
+        results = model.predict(image_files[0], conf=conf)
 
+        # Get the output image and accuracy from the results
+        output_image = results[0].plot()
+        # accuracy = results[0].accuracy
 
-    # 显示预测结果
-    # TODO: 在画布上显示图像和预测结果
+        # Convert the output image to bytes and update the GUI image with it
+        _, output_image_bytes = cv2.imencode(".png", output_image)
+        window["-IMAGE-"].update(data=output_image_bytes.tobytes())
 
-# 定义按钮点击事件
-def browse_image():
-    root = tk.Tk()
-    root.withdraw()
-    file_path = filedialog.askopenfilename()
-    if file_path:
-        predict(file_path)
+        # Remove the first image file from the list
+        image_files.pop(0)
 
-# 创建按钮
-browse_button = tk.Button(window, text="选择图像", command=browse_image)
-browse_button.pack()
+    elif event == "Next Image" and image_files:
+        # Predict on the next image file using YOLOv8
+        results = model.predict(image_files[0], conf=conf)
 
-# 运行GUI事件循环
-window.mainloop()
+        # Get the output image from the results and update the GUI image with it
+        output_image = results[0].plot()
+        _, output_image_bytes = cv2.imencode(".png", output_image)
+        window["-IMAGE-"].update(data=output_image_bytes.tobytes())
+
+        # Remove the first image file from the list
+        image_files.pop(0)
+
+    elif not image_files:
+        window["-INFO-"].update("所有图片已识别")
+
+# Close the GUI window
+window.close()
