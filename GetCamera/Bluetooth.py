@@ -2,7 +2,6 @@ import datetime
 import time
 import serial
 import serial.tools.list_ports
-import matplotlib
 
 
 # 从蓝牙读数据

@@ -30,8 +30,8 @@ cv2.VideoWriter_fourcc('F','L','V','1'):此选项为Flash视频。文件扩展�
 nowtime = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
 fps = int(cap.get(cv2.CAP_PROP_FPS)) # 获取帧率
 fourcc = cv2.VideoWriter_fourcc(*'XVID') # 设置视频的编码格式
-out_proc = cv2.VideoWriter(f'{nowtime}_proconly.avi', fourcc, fps, (frame_width, frame_height), True)
-out_bio = cv2.VideoWriter(f'{nowtime}_bio.avi', fourcc, fps, (frame_width * 2, frame_height), True)
+out_proc = cv2.VideoWriter(f'./SavedVideo/{nowtime}_proconly.avi', fourcc, fps, (frame_width, frame_height), True)
+out_bio = cv2.VideoWriter(f'./SavedVideo/{nowtime}_bio.avi', fourcc, fps, (frame_width * 2, frame_height), True)
 
 
 # Loop through the video frames

@@ -7,7 +7,7 @@ import numpy
 model = YOLO(r".\best.pt")
 
 # whether to save the video-----------------
-save_video = 0
+save_video = 1
 
 # results = model.predict(img_path,save=True,classes=[0,2],conf=0.5) # i.e. classes=0,classes=[0,3,4]
 
@@ -24,8 +24,8 @@ if save_video:
     nowtime = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
     fps = int(cap.get(cv2.CAP_PROP_FPS)) # 获取帧率
     fourcc = cv2.VideoWriter_fourcc(*'XVID') # 设置视频的编码格式
-    out_proc = cv2.VideoWriter(f'{nowtime}_proconly.avi', fourcc, fps, (frame_width, frame_height), True)
-    out_bio = cv2.VideoWriter(f'{nowtime}_bio.avi', fourcc, fps, (frame_width * 2, frame_height), True)
+    out_proc = cv2.VideoWriter(f'./SavedVideo/{nowtime}_proconly.avi', fourcc, fps, (frame_width, frame_height), True)
+    out_bio = cv2.VideoWriter(f'./SavedVideo/{nowtime}_bio.avi', fourcc, fps, (frame_width * 2, frame_height), True)
 
 
 
