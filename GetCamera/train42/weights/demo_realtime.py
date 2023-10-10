@@ -7,7 +7,7 @@ import numpy
 model = YOLO(r".\best.pt")
 
 # whether to save the video-----------------
-save_video = 1
+save_video = 0
 
 # results = model.predict(img_path,save=True,classes=[0,2],conf=0.5) # i.e. classes=0,classes=[0,3,4]
 
