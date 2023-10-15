@@ -10,6 +10,7 @@ model = YOLO(r".\best.pt")
 # whether to save the video-----------------
 save_video = 1
 
+img_path = r"D:\files\VSCode\SmallThings\GetCamera\Pictures"
 url = "http://192.168.8.1:8083/?action=stream" # avaliable only when wifi is connected
 WindowName = "YOLOv8 Inference Group9"
 
@@ -22,13 +23,14 @@ start_time = time.time()
 fps = cap.get(cv2.CAP_PROP_FPS)  # 获取帧率
 frame_height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 frame_width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+date=datetime.datetime.now().strftime("%Y%m%d")
 if save_video:
     nowtime = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
     fourcc = cv2.VideoWriter_fourcc(*"XVID")  # 设置视频的编码格式
     out_proc = cv2.VideoWriter(f"./SavedVideo/{nowtime}_proconly.avi", fourcc, fps, (frame_width, frame_height), True)
     out_bio = cv2.VideoWriter(f"./SavedVideo/{nowtime}_bio.avi", fourcc, fps, (frame_width * 2, frame_height), True)
 
-
+i=0
 # Loop through the video frames
 while cap.isOpened():
     # Read a frame from the video
@@ -55,6 +57,8 @@ while cap.isOpened():
             out_proc.write(annotated_frame)  # 仅检测结果
             out_bio.write(imgs)  # 检测结果和原图
 
+        cv2.imwrite(f"{img_path}/{date}_{i}.jpg", annotated_frame)
+        i=i+1
         # Break the loop if 'q' is pressed
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
